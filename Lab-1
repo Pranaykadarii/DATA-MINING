@@ -5,7 +5,7 @@
     "colab": {
       "provenance": [],
       "toc_visible": true,
-      "authorship_tag": "ABX9TyOm12OuWDfICAwgmDP9JzUX",
+      "authorship_tag": "ABX9TyMfz4Ipl+U0pRYX13DIlgMM",
       "include_colab_link": true
     },
     "kernelspec": {
@@ -1847,6 +1847,17 @@
     {
       "cell_type": "code",
       "source": [
+        "df['Age']=(df['Age']-df['Age'].min())//(df['Age'].max()-df[\"Age\"].min())"
+      ],
+      "metadata": {
+        "id": "65gLTmiiUx-n"
+      },
+      "execution_count": 24,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
         "\n",
         "df['Age']"
       ],
@@ -1856,25 +1867,25 @@
           "height": 458
         },
         "id": "dryNF7QqRraO",
-        "outputId": "7a096a9f-d181-4f83-db07-3b5b8889e690"
+        "outputId": "6a3822b3-6094-4e6e-94e8-c8dba7c18277"
       },
-      "execution_count": 14,
+      "execution_count": 25,
       "outputs": [
         {
           "output_type": "execute_result",
           "data": {
             "text/plain": [
-              "0      22.0\n",
-              "1      38.0\n",
-              "2      26.0\n",
-              "3      35.0\n",
-              "4      35.0\n",
-              "       ... \n",
-              "886    27.0\n",
-              "887    19.0\n",
-              "888     NaN\n",
-              "889    26.0\n",
-              "890    32.0\n",
+              "0      0.0\n",
+              "1      0.0\n",
+              "2      0.0\n",
+              "3      0.0\n",
+              "4      0.0\n",
+              "      ... \n",
+              "886    0.0\n",
+              "887    0.0\n",
+              "888    0.0\n",
+              "889    0.0\n",
+              "890    0.0\n",
               "Name: Age, Length: 891, dtype: float64"
             ],
             "text/html": [
@@ -1902,23 +1913,23 @@
               "  <tbody>\n",
               "    <tr>\n",
               "      <th>0</th>\n",
-              "      <td>22.0</td>\n",
+              "      <td>0.0</td>\n",
               "    </tr>\n",
               "    <tr>\n",
               "      <th>1</th>\n",
-              "      <td>38.0</td>\n",
+              "      <td>0.0</td>\n",
               "    </tr>\n",
               "    <tr>\n",
               "      <th>2</th>\n",
-              "      <td>26.0</td>\n",
+              "      <td>0.0</td>\n",
               "    </tr>\n",
               "    <tr>\n",
               "      <th>3</th>\n",
-              "      <td>35.0</td>\n",
+              "      <td>0.0</td>\n",
               "    </tr>\n",
               "    <tr>\n",
               "      <th>4</th>\n",
-              "      <td>35.0</td>\n",
+              "      <td>0.0</td>\n",
               "    </tr>\n",
               "    <tr>\n",
               "      <th>...</th>\n",
@@ -1926,23 +1937,23 @@
               "    </tr>\n",
               "    <tr>\n",
               "      <th>886</th>\n",
-              "      <td>27.0</td>\n",
+              "      <td>0.0</td>\n",
               "    </tr>\n",
               "    <tr>\n",
               "      <th>887</th>\n",
-              "      <td>19.0</td>\n",
+              "      <td>0.0</td>\n",
               "    </tr>\n",
               "    <tr>\n",
               "      <th>888</th>\n",
-              "      <td>NaN</td>\n",
+              "      <td>0.0</td>\n",
               "    </tr>\n",
               "    <tr>\n",
               "      <th>889</th>\n",
-              "      <td>26.0</td>\n",
+              "      <td>0.0</td>\n",
               "    </tr>\n",
               "    <tr>\n",
               "      <th>890</th>\n",
-              "      <td>32.0</td>\n",
+              "      <td>0.0</td>\n",
               "    </tr>\n",
               "  </tbody>\n",
               "</table>\n",
@@ -1951,15 +1962,90 @@
             ]
           },
           "metadata": {},
-          "execution_count": 14
+          "execution_count": 25
         }
       ]
     },
     {
       "cell_type": "code",
       "source": [
-        "df['Survived']\n",
-        ""
+        "df['Age'].value_counts()"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 178
+        },
+        "id": "v3TiiJ6qVeRe",
+        "outputId": "17555ef9-b8ad-402c-8bb2-2967fcf687fb"
+      },
+      "execution_count": 27,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "Age\n",
+              "0.0    890\n",
+              "1.0      1\n",
+              "Name: count, dtype: int64"
+            ],
+            "text/html": [
+              "<div>\n",
+              "<style scoped>\n",
+              "    .dataframe tbody tr th:only-of-type {\n",
+              "        vertical-align: middle;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe tbody tr th {\n",
+              "        vertical-align: top;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe thead th {\n",
+              "        text-align: right;\n",
+              "    }\n",
+              "</style>\n",
+              "<table border=\"1\" class=\"dataframe\">\n",
+              "  <thead>\n",
+              "    <tr style=\"text-align: right;\">\n",
+              "      <th></th>\n",
+              "      <th>count</th>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>Age</th>\n",
+              "      <th></th>\n",
+              "    </tr>\n",
+              "  </thead>\n",
+              "  <tbody>\n",
+              "    <tr>\n",
+              "      <th>0.0</th>\n",
+              "      <td>890</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>1.0</th>\n",
+              "      <td>1</td>\n",
+              "    </tr>\n",
+              "  </tbody>\n",
+              "</table>\n",
+              "</div><br><label><b>dtype:</b> int64</label>"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 27
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [],
+      "metadata": {
+        "id": "4d8dY-dvVeIW"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "df['Survived']"
       ],
       "metadata": {
         "colab": {
